@@ -6,7 +6,7 @@ import { createUser, getUserByEmail } from '../../services/userService';
 export const Register = (props) => {
   const [user, setUser] = useState({
     email: '',
-    fullName: '',
+    name: '',
   });
   let navigate = useNavigate();
 
@@ -58,7 +58,7 @@ export const Register = (props) => {
             <input
               onChange={updateUser}
               type="text"
-              id="fullName"
+              id="name"
               className="auth-form-input"
               placeholder="Enter your name"
               required
