@@ -30,10 +30,10 @@ export const ApplicationViews = () => {
       >
         <Route index element={<Welcome />} />
         <Route path="myTeas">
-          <Route index element={<AllTeas />} />
+          <Route index element={<AllTeas currentUser={currentUser} />} />
           <Route path=":teaId" element={<TeaDetails />} />
         </Route>
-        <Route path="newTea" element={<NewTea />} />
+        <Route path="newTea" element={<NewTea currentUser={currentUser} />} />
         <Route path="edit-tea/:teaId" element={<EditTea />} />
         <Route path="favorites" element={<Favorites />} />
         <Route path="profile" element={<UserProfile />} />
