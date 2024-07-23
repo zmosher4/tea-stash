@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { getAllTeas } from '../../services/teaService';
 import { getAllCategories } from '../../services/categoryService';
+import { Link } from 'react-router-dom';
 
 export const AllTeas = ({ currentUser }) => {
   const [userTeas, setUserTeas] = useState([]);
@@ -24,7 +25,9 @@ export const AllTeas = ({ currentUser }) => {
   return userTeas.map((tea) => {
     return (
       <div key={tea.id}>
-        <div>Tea: {tea.name}</div>
+        <div>
+          <Link to={`/myTeas/${tea.id}`}>Tea: {tea.name}</Link>
+        </div>
         <div>Price: ${tea.price}</div>
         <div>
           <div>

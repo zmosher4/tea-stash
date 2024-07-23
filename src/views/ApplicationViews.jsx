@@ -8,6 +8,7 @@ import { NewTea } from '../components/newTea/NewTea';
 import { Favorites } from '../components/favorites/Favorites';
 import { UserProfile } from '../components/profile/UserProfile';
 import { EditTea } from '../components/editTea/EditTea';
+import { EditProfile } from '../components/profile/EditProfile';
 
 export const ApplicationViews = () => {
   const [currentUser, setCurrentUser] = useState({});
@@ -31,12 +32,25 @@ export const ApplicationViews = () => {
         <Route index element={<Welcome />} />
         <Route path="myTeas">
           <Route index element={<AllTeas currentUser={currentUser} />} />
-          <Route path=":teaId" element={<TeaDetails />} />
+          <Route
+            path=":teaId"
+            element={<TeaDetails currentUser={currentUser} />}
+          />
         </Route>
         <Route path="newTea" element={<NewTea currentUser={currentUser} />} />
         <Route path="edit-tea/:teaId" element={<EditTea />} />
-        <Route path="favorites" element={<Favorites />} />
-        <Route path="profile" element={<UserProfile />} />
+        <Route
+          path="favorites"
+          element={<Favorites currentUser={currentUser} />}
+        />
+        <Route
+          path="profile"
+          element={<UserProfile currentUser={currentUser} />}
+        />
+        <Route
+          path="edit-profile"
+          element={<EditProfile currentUser={currentUser} />}
+        />
       </Route>
     </Routes>
   );
