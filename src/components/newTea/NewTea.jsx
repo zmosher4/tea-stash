@@ -130,7 +130,7 @@ export const NewTea = ({ currentUser }) => {
           />
         </Form.Group>
         <Form.Group controlId="price" className="mb-3">
-          <Form.Label>Price</Form.Label>
+          <Form.Label>Price (in USD)</Form.Label>
           <Form.Control
             type="number"
             value={createdTea.price}

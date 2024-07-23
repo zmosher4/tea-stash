@@ -1,8 +1,9 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { getAllTeas } from '../../services/teaService';
 import { getAllCategories } from '../../services/categoryService';
 import { Link } from 'react-router-dom';
 import { Card, Col, Container, Row } from 'react-bootstrap';
+import './custom.css'; // Import custom CSS
 
 export const AllTeas = ({ currentUser }) => {
   const [userTeas, setUserTeas] = useState([]);
@@ -34,7 +35,7 @@ export const AllTeas = ({ currentUser }) => {
                 <Card.Title>
                   <Link
                     to={`/myTeas/${tea.id}`}
-                    className="text-decoration-none"
+                    className="text-decoration-none link-no-color"
                   >
                     {tea.name}
                   </Link>
@@ -60,3 +61,5 @@ export const AllTeas = ({ currentUser }) => {
     </Container>
   );
 };
+
+export default AllTeas;
