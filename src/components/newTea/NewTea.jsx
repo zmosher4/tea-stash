@@ -3,6 +3,7 @@ import { getAllCategories } from '../../services/categoryService';
 import { getAllVendors } from '../../services/vendorService';
 import { addTea } from '../../services/teaService';
 import { useNavigate } from 'react-router-dom';
+import { Form, Button, Container } from 'react-bootstrap';
 
 export const NewTea = ({ currentUser }) => {
   const [createdTea, setCreatedTea] = useState({
@@ -74,7 +75,7 @@ export const NewTea = ({ currentUser }) => {
 
     const newTea = {
       ...createdTea,
-      datePurchased: new Date(),
+      datePurchased: new Date().toDateString(),
       userId: currentUser.id,
     };
 
@@ -84,83 +85,80 @@ export const NewTea = ({ currentUser }) => {
   };
 
   return (
-    <form>
-      <h2>New Tea</h2>
-      <fieldset>
-        <label>Choose a category </label>
-        <select
-          onChange={handleCategorySelection}
-          value={createdTea.categoryId}
-          required
-          name="category"
-          id="category"
-        >
-          <option value="">All Categories</option>
-          {categories.map((category) => {
-            return (
+    <Container>
+      <h2 className="my-4">New Tea</h2>
+      <Form onSubmit={handleSubmit}>
+        <Form.Group controlId="category" className="mb-3">
+          <Form.Label>Choose a category</Form.Label>
+          <Form.Control
+            as="select"
+            value={createdTea.categoryId}
+            onChange={handleCategorySelection}
+            required
+          >
+            <option value="">All Categories</option>
+            {categories.map((category) => (
               <option key={category.id} value={category.id}>
                 {category.name}
               </option>
-            );
-          })}
-        </select>
-      </fieldset>
-      <fieldset>
-        <label>Choose a vendor: </label>
-        <select
-          onChange={handleVendorSelection}
-          value={createdTea.vendorId}
-          required
-          name="vendor"
-          id="vendor"
-        >
-          <option value="">All Vendors</option>
-          {vendors.map((vendor) => {
-            return (
+            ))}
+          </Form.Control>
+        </Form.Group>
+        <Form.Group controlId="vendor" className="mb-3">
+          <Form.Label>Choose a vendor</Form.Label>
+          <Form.Control
+            as="select"
+            value={createdTea.vendorId}
+            onChange={handleVendorSelection}
+            required
+          >
+            <option value="">All Vendors</option>
+            {vendors.map((vendor) => (
               <option key={vendor.id} value={vendor.id}>
                 {vendor.name}
               </option>
-            );
-          })}
-        </select>
-      </fieldset>
-      <fieldset>
-        <label>Name of Tea: </label>
-        <input
-          type="text"
-          value={createdTea.name}
-          required
-          onChange={handleNameSelection}
-        />
-      </fieldset>
-      <fieldset>
-        <label>Price: </label>
-        <input
-          type="number"
-          value={createdTea.price}
-          required
-          onChange={handlePrice}
-        />
-      </fieldset>
-      <fieldset>
-        <label>Tasting Notes: </label>
-        <input
-          type="text"
-          value={createdTea.notes}
-          required
-          onChange={handleNotes}
-        />
-      </fieldset>
-      <fieldset>
-        <label>Favorite: </label>
-        <input
-          type="checkbox"
-          value={createdTea.favorite}
-          required
-          onChange={handleFavorite}
-        />
-      </fieldset>
-      <button onClick={handleSubmit}>Submit</button>
-    </form>
+            ))}
+          </Form.Control>
+        </Form.Group>
+        <Form.Group controlId="name" className="mb-3">
+          <Form.Label>Name of Tea</Form.Label>
+          <Form.Control
+            type="text"
+            value={createdTea.name}
+            onChange={handleNameSelection}
+            required
+          />
+        </Form.Group>
+        <Form.Group controlId="price" className="mb-3">
+          <Form.Label>Price</Form.Label>
+          <Form.Control
+            type="number"
+            value={createdTea.price}
+            onChange={handlePrice}
+            required
+          />
+        </Form.Group>
+        <Form.Group controlId="notes" className="mb-3">
+          <Form.Label>Tasting Notes</Form.Label>
+          <Form.Control
+            type="text"
+            value={createdTea.notes}
+            onChange={handleNotes}
+            required
+          />
+        </Form.Group>
+        <Form.Group controlId="favorite" className="mb-3">
+          <Form.Check
+            type="checkbox"
+            label="Favorite"
+            checked={createdTea.favorite}
+            onChange={handleFavorite}
+          />
+        </Form.Group>
+        <Button variant="primary" type="submit">
+          Submit
+        </Button>
+      </Form>
+    </Container>
   );
 };

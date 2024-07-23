@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { getUserById } from '../../services/userService';
 import { getAllTeas } from '../../services/teaService';
+import { Button, Container, Row, Col } from 'react-bootstrap';
 
 export const UserProfile = ({ currentUser }) => {
   const [teas, setTeas] = useState([]);
@@ -28,14 +29,24 @@ export const UserProfile = ({ currentUser }) => {
   }, [user]);
 
   return (
-    <>
-      <h1>my profile</h1>
-      <div>
-        <div>Name: {user.name}</div>
-        <div>Email: {user.email}</div>
-        <div>Teas in stash: {teas.length}</div>
-        <button onClick={() => navigate('/edit-profile')}>Edit</button>
-      </div>
-    </>
+    <Container>
+      <h1 className="my-4">My Profile</h1>
+      <Row>
+        <Col md={6}>
+          <div className="mb-3">
+            <strong>Name:</strong> {user.name}
+          </div>
+          <div className="mb-3">
+            <strong>Email:</strong> {user.email}
+          </div>
+          <div className="mb-3">
+            <strong>Teas in stash:</strong> {teas.length}
+          </div>
+          <Button variant="primary" onClick={() => navigate('/edit-profile')}>
+            Edit
+          </Button>
+        </Col>
+      </Row>
+    </Container>
   );
 };
