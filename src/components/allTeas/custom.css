@@ -1,0 +1,8 @@
+/* custom.css */
+.link-no-color:link {
+  color: inherit;
+}
+
+.link-no-color:visited {
+  color: inherit;
+}
