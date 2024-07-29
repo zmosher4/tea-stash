@@ -76,6 +76,13 @@ export const EditTea = () => {
     copy.favorite = event.target.checked;
     setTea(copy);
   };
+
+  const handleImgUrl = (event) => {
+    const copy = { ...tea };
+    copy.imgUrl = event.target.value;
+    setTea(copy);
+  };
+
   const handleSubmit = async (event) => {
     event.preventDefault();
 
@@ -154,6 +161,15 @@ export const EditTea = () => {
             value={tea.notes}
             onChange={handleNotes}
             required
+          />
+        </Form.Group>
+
+        <Form.Group controlId="imageUrl" className="mb-3">
+          <Form.Label>Tasting Notes</Form.Label>
+          <Form.Control
+            type="text"
+            value={tea.imgUrl}
+            onChange={handleImgUrl}
           />
         </Form.Group>
 

@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { changeTea, getAllTeas } from '../../services/teaService';
 import { Link } from 'react-router-dom';
 import { Card, Col, Container, Row, Button } from 'react-bootstrap';
+import './custom.css';
 
 export const Favorites = ({ currentUser }) => {
   const [myTeas, setMyTeas] = useState([]);
@@ -35,7 +36,15 @@ export const Favorites = ({ currentUser }) => {
       <Row>
         {favorites.map((tea) => (
           <Col key={tea.id} md={4} className="mb-4 mt-4">
-            <Card className="h-100">
+            <Card className="h-100 tea">
+              <Link to={`/myTeas/${tea.id}`} className="text-decoration-none">
+                <Card.Img
+                  variant="top"
+                  src={tea.imgUrl}
+                  className="custom-img"
+                  alt={tea.name}
+                />
+              </Link>
               <Card.Body>
                 <Card.Title>
                   <Link
