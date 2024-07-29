@@ -70,6 +70,12 @@ export const NewTea = ({ currentUser }) => {
     setCreatedTea(copy);
   };
 
+  const handleImgUrl = (event) => {
+    const copy = { ...createdTea };
+    copy.imgUrl = event.target.value;
+    setCreatedTea(copy);
+  };
+
   const handleSubmit = async (event) => {
     event.preventDefault();
 
@@ -145,6 +151,14 @@ export const NewTea = ({ currentUser }) => {
             value={createdTea.notes}
             onChange={handleNotes}
             required
+          />
+        </Form.Group>
+        <Form.Group controlId="notes" className="mb-3">
+          <Form.Label>Image Url</Form.Label>
+          <Form.Control
+            type="text"
+            value={createdTea.imgUrl}
+            onChange={handleImgUrl}
           />
         </Form.Group>
         <Form.Group controlId="favorite" className="mb-3">
