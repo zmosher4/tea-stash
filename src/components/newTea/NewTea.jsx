@@ -1,11 +1,12 @@
 import { useEffect, useState } from 'react';
 import { getAllCategories } from '../../services/categoryService';
 import { getAllVendors } from '../../services/vendorService';
-import { addTea } from '../../services/teaService';
+import { addTea, getAllTeas } from '../../services/teaService';
 import { useNavigate } from 'react-router-dom';
 import { Form, Button, Container } from 'react-bootstrap';
 
 export const NewTea = ({ currentUser }) => {
+  const [allTeas, setAllTeas] = useState([]);
   const [createdTea, setCreatedTea] = useState({
     name: '',
     price: '',
@@ -20,6 +21,11 @@ export const NewTea = ({ currentUser }) => {
   const [vendors, setVendors] = useState([]);
   const navigate = useNavigate();
 
+  const fetchTeas = async () => {
+    const teaArr = await getAllTeas();
+    setAllTeas(teaArr);
+  };
+
   const fetchCategories = async () => {
     const catArr = await getAllCategories();
     setCategories(catArr);
@@ -30,6 +36,7 @@ export const NewTea = ({ currentUser }) => {
   };
 
   useEffect(() => {
+    fetchTeas();
     fetchCategories();
     fetchVendors();
   }, []);
@@ -86,8 +93,9 @@ export const NewTea = ({ currentUser }) => {
     };
 
     await addTea(newTea);
+    const newestId = allTeas[allTeas.length - 1].id + 1;
 
-    navigate('/myTeas');
+    navigate(`/myTeas/${newestId}`);
   };
 
   return (
