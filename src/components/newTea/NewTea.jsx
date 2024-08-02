@@ -10,7 +10,6 @@ export const NewTea = ({ currentUser }) => {
   const [createdTea, setCreatedTea] = useState({
     name: '',
     price: '',
-    datePurchased: 0,
     notes: '',
     categoryId: 0,
     userId: 0,
@@ -88,7 +87,7 @@ export const NewTea = ({ currentUser }) => {
 
     const newTea = {
       ...createdTea,
-      datePurchased: new Date().toDateString(),
+
       userId: currentUser.id,
     };
 
