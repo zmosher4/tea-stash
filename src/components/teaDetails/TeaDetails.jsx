@@ -32,7 +32,7 @@ export const TeaDetails = () => {
             <strong>Price:</strong> ${tea.price}
           </div>
           <div className="mb-3">
-            <strong>Purchased on:</strong> {tea.datePurchased} from{' '}
+            <strong>Purchased from </strong>
             {tea.vendor?.name}
           </div>
           <div className="mb-3">

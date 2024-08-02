@@ -10,7 +10,7 @@ export const EditTea = () => {
   const [tea, setTea] = useState({
     name: '',
     price: '',
-    datePurchased: 0,
+
     notes: '',
     categoryId: 0,
     userId: 0,
