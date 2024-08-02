@@ -14,9 +14,9 @@ export const ApplicationViews = () => {
   const [currentUser, setCurrentUser] = useState({});
 
   useEffect(() => {
-    const localLearningUser = localStorage.getItem('tea_friend');
-    const learningUserObject = JSON.parse(localLearningUser);
-    setCurrentUser(learningUserObject);
+    const localTeaUser = localStorage.getItem('tea_friend');
+    const teaUserObject = JSON.parse(localTeaUser);
+    setCurrentUser(teaUserObject);
   }, []);
   return (
     <Routes>
