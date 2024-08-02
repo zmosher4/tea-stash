@@ -88,7 +88,7 @@ export const EditTea = () => {
 
     await changeTea(tea);
 
-    navigate('/myTeas');
+    navigate(`/myTeas/${tea.id}`);
   };
 
   return (
